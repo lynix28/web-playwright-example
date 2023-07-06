@@ -1,5 +1,5 @@
 elements = {
-    "PageTitle": "getByText('Swag Labs')",
+    "PageTitle": "text=\"Swag Labs\"",
     "UsernamePlaceholder": "[data-test=\"username\"]",
     "PasswordPlaceholder": "[data-test=\"password\"]",
     "LoginButton": "[data-test=\"login-button\"]"
@@ -7,23 +7,19 @@ elements = {
 
 class Selectors:
     def __init__(self) -> None:
-        self._pageTitle = elements["PageTitle"]
-        self._usernamePlaceholder = elements["UsernamePlaceholder"]
-        self._passwordPlaceholder = elements["PasswordPlaceholder"]
-        self._loginButton = elements["LoginButton"]
+        self.pagetitle = elements["PageTitle"]
+        self.usernameplaceholder = elements["UsernamePlaceholder"]
+        self.passwordplaceholder = elements["PasswordPlaceholder"]
+        self.loginbutton = elements["LoginButton"]
 
-    @property
     def pageTitle(self):
-        return self._pageTitle
+        return self.pagetitle
 
-    @property
     def usernamePlaceholder(self):
-        return self._usernamePlaceholder
+        return self.usernameplaceholder
 
-    @property
     def passwordPlaceholder(self):
-        return self._passwordPlaceholder
+        return self.passwordplaceholder
 
-    @property
     def loginButton(self):
-        return self._loginButton
+        return self.loginbutton
