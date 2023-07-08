@@ -9,29 +9,10 @@ from resources.pages.login_page.web_selectors import Selectors
 selector = Selectors()
 
 class Login:
-    def __init__(self, playwright) -> None:
-        browser_name = os.getenv("BROWSER")
-        self.browser = None
-        headless = False
+    def __init__(self, page) -> None:
+        self.page = page
 
-        if browser_name == "chromium":
-            self.browser = playwright.chromium.launch(headless=headless)
-        elif browser_name == "firefox":
-            self.browser = playwright.firefox.launch(headless=headless)
-        elif browser_name == "webkit":
-            self.browser = playwright.webkit.launch(headless=headless)
-        else:
-            raise ValueError("Invalid browser name")
-
-        self.context = self.browser.new_context()
-        self.page = self.context.new_page()
-
-        self.page.set_viewport_size({
-            "width": 1680, 
-            "height": 844
-        })
-
-    def launchWeb(self):
+    def goToWeb(self):
         self.page.goto(os.getenv("BASE_URL"), wait_until="networkidle")
 
     def checkContent(self, pageTitle, loginText):
