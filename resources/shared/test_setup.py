@@ -1,3 +1,4 @@
+from distutils.util import strtobool
 from dotenv import load_dotenv
 load_dotenv(".env")
 
@@ -9,8 +10,8 @@ class Launch_Browser:
 
     def launchBrowser(self):
         browser_name = os.getenv("BROWSER")
+        headless = bool(strtobool(os.getenv("HEADLESS")))
         self.browser = None
-        headless = False
 
         if browser_name == "chromium":
             self.browser = self.playwright.chromium.launch(headless=headless)
