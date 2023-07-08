@@ -1,6 +1,6 @@
 from playwright.sync_api import expect
 from dotenv import load_dotenv
-load_dotenv("./env")
+load_dotenv(".env")
 
 import sys, re
 sys.path.append(sys.path[0] + "/..")
