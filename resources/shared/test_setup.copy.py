@@ -1,24 +1,17 @@
 from distutils.util import strtobool
 from dotenv import load_dotenv
-from playwright.sync_api import Playwright
+load_dotenv(".env")
 
-import os
+import os, sys
+sys.path.append(sys.path[0] + "/..")
+
 from resources.shared.test_data import variables
 from resources.pages.login_page.web_selectors import Selectors
-
-load_dotenv(".env")
 selector = Selectors()
 
-
-class BrowserSingleton:
-    _instance = None
-
-    def __new__(cls, playwright):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-            cls._instance.playwright = playwright
-            cls._instance.launchBrowser()
-        return cls._instance
+class Launch_Browser:
+    def __init__(self, playwright) -> None:
+        self.playwright = playwright
 
     def launchBrowser(self):
         browser_name = os.getenv("BROWSER")

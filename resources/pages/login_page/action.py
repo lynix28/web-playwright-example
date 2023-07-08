@@ -22,7 +22,7 @@ class Login:
         self.page.wait_for_selector(selector.loginButton(), state="visible", timeout=10000)
 
         expect(self.page).to_have_title(re.compile(pageTitle))
-        expect(self.page.locator(selector.loginButton())).to_have_text(loginText)
+        expect(self.page.locator(selector.loginButton())).to_have_text(re.compile(loginText))
 
     def fillUsername(self, username):
         self.page.fill(selector.usernamePlaceholder(), username)
@@ -33,5 +33,6 @@ class Login:
     def clickLogin(self):
         self.page.click(selector.loginButton())
 
-    def closeBrowser(self):
-        self.page.close()
+    def checkErrorMessage(self, errorText):
+        self.page.wait_for_selector(selector.invalidCredentialInfo(), state="visible", timeout=10000)
+        expect(self.page.locator(selector.invalidCredentialInfo())).to_have_text(re.compile(errorText))
