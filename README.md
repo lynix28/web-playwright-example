@@ -1,7 +1,7 @@
 # WEB-PLAYWRIGHT-EXAMPLE
 
 <h3><ins>How to Setup:</h3>
-<sub> *if you use Python3, just change the command to `python3` & `pip3`</sub>
+    
 - Clone this repo and go to the project directory
 - Install & create Virtual ENV
     - `pip install virtualenv`
@@ -14,8 +14,12 @@
     - `playwright install`
 
 <h3><ins>Inspect an element:</h3>
-- `playwright cr "URL_to_website"` <sub>*use: cr = chromium | ff = firefox | wk = webkit</sub>
+
+- `playwright cr "URL_to_website"`
+    - use: cr = chromium | ff = firefox | wk = webkit
 
 <h3><ins>Running the tests:</h3>
-- `pytest ./[your_test_script].py --headed` <sub>don't use '--headed' to run as HEADLESS</sub>
-- `pytest ./[your_test_script].py --browser firefox --headed` <sub>to use different browser add CLI argument 'firefox' or 'webkit', the default is 'chromium'</sub>
+    
+- `pytest ./[your_test_script].py`
+    - to run it on HEADLESS, update the `.env` file, the default is 'False'
+    - to use different browser like 'firefox' or 'webkit', update the `.env` file, the default is 'chromium'
