@@ -10,6 +10,7 @@ from resources.pages.dashboard.test_asserts import validate
 @pytest.fixture(scope="session")
 def setup(playwright: Playwright):
     setup = BrowserSingleton(playwright)
+    setup.login()
     yield setup.page
     setup.closeBrowser()
 
