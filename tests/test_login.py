@@ -8,16 +8,11 @@ from resources.pages.login_page.action import Login
 from resources.pages.login_page.test_asserts import validate
 from resources.shared.test_data import variables
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def setup(playwright: Playwright):
     setup = BrowserSingleton(playwright)
     yield setup.page
-
-@pytest.fixture
-def teardown(playwright: Playwright):
-    browser = BrowserSingleton(playwright)
-    if browser:
-        browser.closeBrowser()
+    setup.closeBrowser()
 
 @pytest.mark.run(order=1)
 def test_login(setup):

@@ -7,17 +7,11 @@ from resources.shared.test_setup import BrowserSingleton
 from resources.pages.dashboard.action  import Dashboard
 from resources.pages.dashboard.test_asserts import validate
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def setup(playwright: Playwright):
     setup = BrowserSingleton(playwright)
-    setup.login()
     yield setup.page
-
-@pytest.fixture
-def teardown(playwright: Playwright):
-    browser = BrowserSingleton(playwright)
-    if browser:
-        browser.closeBrowser()
+    setup.closeBrowser()
 
 @pytest.mark.run(order=1)
 def test_dashboard(setup):
