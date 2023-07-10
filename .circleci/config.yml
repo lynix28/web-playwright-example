@@ -1,0 +1,89 @@
+version: 2.1
+jobs:
+  Testing-Chromium:
+    docker:
+      - image: pridecontrol/playwright:1.0.0
+    steps:
+      - checkout
+      - run:
+          name: "Prepare test data"
+          command: cp -r . /app/
+      - run:
+          name: "Setup test environment"
+          command: |
+            cd /app/
+            cp env.example .env
+      - run:
+          name: "Start the tests"
+          command: |
+            cd /app/
+            chmod +x ./run_test.sh
+            ./run_test.sh --headless true --browser chromium
+      - run:
+          name: "Wrapping test result"
+          command: |
+            cd /app/
+            tar -cvf artifact_chrome.tar ./results
+      - store_artifacts:
+          path: /app/artifact_chrome.tar
+            
+  Testing-Firefox:
+    docker:
+      - image: pridecontrol/playwright:1.0.0
+    steps:
+      - checkout
+      - run:
+          name: "Prepare test data"
+          command: cp -r . /app/
+      - run:
+          name: "Setup test environment"
+          command: |
+            cd /app/
+            cp env.example .env
+      - run:
+          name: "Start the tests"
+          command: |
+            cd /app/
+            chmod +x ./run_test.sh
+            ./run_test.sh --headless true --browser firefox
+      - run:
+          name: "Wrapping test result"
+          command: |
+            cd /app/
+            tar -cvf artifact_firefox.tar ./results
+      - store_artifacts:
+          path: /app/artifact_firefox.tar
+
+  Testing-Webkit:
+    docker:
+      - image: pridecontrol/playwright:1.0.0
+    steps:
+      - checkout
+      - run:
+          name: "Prepare test data"
+          command: cp -r . /app/
+      - run:
+          name: "Setup test environment"
+          command: |
+            cd /app/
+            cp env.example .env
+      - run:
+          name: "Start the tests"
+          command: |
+            cd /app/
+            chmod +x ./run_test.sh
+            ./run_test.sh --headless true --browser webkit
+      - run:
+          name: "Wrapping test result"
+          command: |
+            cd /app/
+            tar -cvf artifact_webkit.tar ./results
+      - store_artifacts:
+          path: /app/artifact_webkit.tar
+
+workflows:
+  Test-Workflow:
+    jobs:
+      - Testing-Chromium
+      - Testing-Firefox
+      - Testing-Webkit
