@@ -1,5 +1,7 @@
 # WEB-PLAYWRIGHT-EXAMPLE
 
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/lynix28/web-playwright-example/tree/master.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/lynix28/web-playwright-example/tree/master)
+
 <h3><ins>How to Setup:</h3>
 
 - Clone this repo and go to the project directory
