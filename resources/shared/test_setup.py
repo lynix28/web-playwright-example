@@ -1,6 +1,5 @@
 from distutils.util import strtobool
 from dotenv import load_dotenv
-from playwright.sync_api import Playwright
 
 import os
 from resources.shared.test_data import variables
