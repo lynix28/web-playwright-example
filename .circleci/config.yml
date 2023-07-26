@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   Testing-Chromium:
     docker:
-      - image: pridecontrol/playwright:1.0.0
+      - image: pridecontrol/playwright:1.1.0
     steps:
       - checkout
       - run:
