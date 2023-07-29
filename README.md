@@ -6,16 +6,20 @@
 
 - Clone this repo and go to the project directory
 - Install & create Virtual ENV
+
    - `pip install virtualenv`
    - `python -m venv ./venv`
 
 - Use the Virtual ENV
+
    - `source ./venv/bin/activate`
 
 - Install PIP Packages
+
    - `pip install -r requirements.txt`
 
 - Download required browser
+
    - `playwright install`
 
 <h3><ins>Inspect an element:</h3>
@@ -33,6 +37,12 @@
 
 - `./run_test.sh` | to run all tests
 - `./run_test.sh [your_test_script_alias]` | to run a specific scenario
-    - Make sure to give "execute" permission to `run_test.sh`
-    - Make sure to add your test to `test_list.sh` if there is any new test scenario
+   - Make sure to give "execute" permission to `run_test.sh`
+   - Make sure to add your test to `test_list.sh` if there is any new test scenario
+
 - `./run_test.sh --help` | for more example how to run the test
+
+<h3><ins>Running the tests (BDD):</h3>
+
+- `pytest` | to run all tests
+- `pytest -k "tag_or_alias"` | to run a specific scenario (ex: login)

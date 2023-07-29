@@ -28,7 +28,7 @@ display_help() {
 if [[ $# -eq 0 ]]; then
     update_env_variable "BROWSER" "$BROWSER"
     update_env_variable "HEADLESS" "$HEADLESS"
-    pytest ./tests/*
+    pytest
 elif [[ $1 == "--help" ]]; then
     display_help
     exit 0
@@ -41,7 +41,7 @@ elif [[ $# -gt 0 && $# -lt 5 ]]; then
             update_env_variable "BROWSER" "$2"
             update_env_variable "HEADLESS" "$4"
         fi
-        pytest ./tests/*
+        pytest
     elif [[ $1 == "--headless" || $1 == "--browser" ]]; then
         if [[ -n $2 ]]; then
             variable=$1
@@ -52,7 +52,7 @@ elif [[ $# -gt 0 && $# -lt 5 ]]; then
                 update_env_variable "HEADLESS" "$HEADLESS"
                 update_env_variable "BROWSER" "$2"
             fi
-            pytest ./tests/*
+            pytest
         else
             echo "Invalid arguments. Check './run_test.sh --help'"
             exit 1

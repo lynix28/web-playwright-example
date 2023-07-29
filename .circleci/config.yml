@@ -13,6 +13,7 @@ jobs:
           command: |
             cd /app/
             cp env.example .env
+            pip install pytest-bdd
       - run:
           name: "Start the tests"
           command: |
@@ -40,6 +41,7 @@ jobs:
           command: |
             cd /app/
             cp env.example .env
+            pip install pytest-bdd
       - run:
           name: "Start the tests"
           command: |
@@ -67,6 +69,7 @@ jobs:
           command: |
             cd /app/
             cp env.example .env
+            pip install pytest-bdd
       - run:
           name: "Start the tests"
           command: |

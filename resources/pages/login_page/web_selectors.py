@@ -3,7 +3,7 @@ elements = {
     "UsernamePlaceholder": "[data-test=\"username\"]",
     "PasswordPlaceholder": "[data-test=\"password\"]",
     "LoginButton": "[data-test=\"login-button\"]",
-    "InvalidCredentialInfo": "text='Epic sadface: Username and password do not match any user in this service'"
+    "InvalidCredentialInfo": "//*[@id=\"login_button_container\"]/div/form/div[3]/h3",
 }
 
 class Selectors:
