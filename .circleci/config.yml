@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   Testing-Chromium:
     docker:
-      - image: pridecontrol/playwright:1.1.0
+      - image: pridecontrol/playwright:1.2.0
     steps:
       - checkout
       - run:
@@ -13,7 +13,6 @@ jobs:
           command: |
             cd /app/
             cp env.example .env
-            pip install pytest-bdd
       - run:
           name: "Start the tests"
           command: |
@@ -41,7 +40,6 @@ jobs:
           command: |
             cd /app/
             cp env.example .env
-            pip install pytest-bdd
       - run:
           name: "Start the tests"
           command: |
@@ -69,7 +67,6 @@ jobs:
           command: |
             cd /app/
             cp env.example .env
-            pip install pytest-bdd
       - run:
           name: "Start the tests"
           command: |
