@@ -14,17 +14,17 @@ class Selectors:
         self.loginbutton = elements["LoginButton"]
         self.invalidcredentialinfo = elements["InvalidCredentialInfo"]
 
-    def pageTitle(self):
+    def page_title(self):
         return self.pagetitle
 
-    def usernamePlaceholder(self):
+    def username_placeholder(self):
         return self.usernameplaceholder
 
-    def passwordPlaceholder(self):
+    def password_placeholder(self):
         return self.passwordplaceholder
 
-    def loginButton(self):
+    def login_button(self):
         return self.loginbutton
     
-    def invalidCredentialInfo(self):
+    def invalid_credential_info(self):
         return self.invalidcredentialinfo

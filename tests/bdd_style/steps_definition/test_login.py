@@ -17,52 +17,52 @@ scenarios("../features/login.feature")
 def setup(playwright: Playwright):
     setup = BrowserSingleton(playwright)
     yield setup.page
-    setup.closeBrowser()
+    setup.close_browser()
 
 @given("Sauce Demo login page")
 def login_page(setup):
     login = Login(setup)
-    login.goToWeb()
-    login.checkContent(loginText=login_validate["LoginButtonText"], pageTitle=login_validate["PageTitle"])
+    login.go_to_web()
+    login.check_content(loginText=login_validate["LoginButtonText"], pageTitle=login_validate["PageTitle"])
 
 @when("I enter a valid username")
 def enter_valid_username(setup):
     login = Login(setup)
-    login.fillUsername(variables["username"])
+    login.fill_username(variables["username"])
 
 @when("I enter an invalid username")
 def enter_invalid_username(setup):
     login = Login(setup)
-    login.fillUsername(variables["invalid"]["username"])
+    login.fill_username(variables["invalid"]["username"])
 
 @when(parsers.parse('I enter "{phrase}" as username'))
 def enter_blocked_username(setup, phrase):
     login = Login(setup)
-    login.fillUsername(phrase)
+    login.fill_username(phrase)
 
 @when("with a valid password")
 def enter_valid_password(setup):
     login = Login(setup)
-    login.fillPassword(variables["password"])
-    login.clickLogin()
+    login.fill_password(variables["password"])
+    login.click_login()
 
 @when("with an invalid password")
 def enter_invalid_password(setup):
     login = Login(setup)
-    login.fillPassword(variables["invalid"]["password"])
-    login.clickLogin()
+    login.fill_password(variables["invalid"]["password"])
+    login.click_login()
 
 @then("I can logged in and access the account")
 def success_logged_in(setup):
     dashboard = Dashboard(setup)
-    dashboard.checkContent(headerTitleText=dashboard_validate["page_header"]["title"], headerContentTitleText=dashboard_validate["page_header"]["content_title"])
+    dashboard.check_content(header_title_text=dashboard_validate["page_header"]["title"], header_content_title_text=dashboard_validate["page_header"]["content_title"])
 
 @then("I will see an error message")
 def failed_logged_in_invalid_credential(setup):
     login = Login(setup)
-    login.checkErrorMessage(errorText=login_validate["InvalidCredentialText"])
+    login.check_error_message(errorText=login_validate["InvalidCredentialText"])
 
 @then("I will see an error message about the blocked credential")
 def failed_logged_in_blocked_credential(setup):
     login = Login(setup)
-    login.checkErrorMessage(errorText=login_validate["BlockedCredentialText"])
+    login.check_error_message(errorText=login_validate["BlockedCredentialText"])

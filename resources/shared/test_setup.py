@@ -16,10 +16,10 @@ class BrowserSingleton:
         if cls._instance is None:
             cls._instance = super().__new__(cls)
             cls._instance.playwright = playwright
-            cls._instance.launchBrowser()
+            cls._instance.launch_browser()
         return cls._instance
 
-    def launchBrowser(self):
+    def launch_browser(self):
         browser_name = os.getenv("BROWSER")
         headless = bool(strtobool(os.getenv("HEADLESS")))
         width = int(os.getenv("WIDTH"))
@@ -46,14 +46,14 @@ class BrowserSingleton:
     def login(self):
         self.page.goto(os.getenv("BASE_URL"), wait_until="networkidle")
 
-        self.page.wait_for_selector(selector.usernamePlaceholder(), state="visible", timeout=10000)
-        self.page.fill(selector.usernamePlaceholder(), variables["username"])
+        self.page.wait_for_selector(selector.username_placeholder(), state="visible", timeout=10000)
+        self.page.fill(selector.username_placeholder(), variables["username"])
 
-        self.page.wait_for_selector(selector.passwordPlaceholder(), state="visible", timeout=10000)
-        self.page.fill(selector.passwordPlaceholder(), variables["password"])
+        self.page.wait_for_selector(selector.password_placeholder(), state="visible", timeout=10000)
+        self.page.fill(selector.password_placeholder(), variables["password"])
 
-        self.page.wait_for_selector(selector.loginButton(), state="visible", timeout=10000)
-        self.page.click(selector.loginButton())
+        self.page.wait_for_selector(selector.login_button(), state="visible", timeout=10000)
+        self.page.click(selector.login_button())
 
-    def closeBrowser(self):
+    def close_browser(self):
         self.page.close()

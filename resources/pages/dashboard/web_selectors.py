@@ -20,21 +20,21 @@ class Selectors:
         self.contenttitle = elements["header"]["ContentTitle"]
         self.bodycontentcontainer = elements["body"]["ContentContainer"]
 
-    def headerTitle(self):
+    def header_title(self):
         return self.headertitle
 
-    def headerSideMenuButton(self):
+    def header_side_menu_button(self):
         return self.headersidemenubutton
 
-    def headerShoppingCartButton(self):
+    def header_shopping_cart_button(self):
         return self.headershoppingcartbutton
 
-    def headerSortButton(self):
+    def header_sort_button(self):
         return self.headersortbutton
 
-    def headerContentTitle(self):
+    def header_content_title(self):
         return self.contenttitle
 
-    def bodyContentContainer(self, index=1):
+    def body_content_container(self, index=1):
         locator = self.bodycontentcontainer
         return f"{locator}:nth-child({index})"

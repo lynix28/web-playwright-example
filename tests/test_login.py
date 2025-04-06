@@ -12,23 +12,23 @@ from resources.shared.test_data import variables
 def setup(playwright: Playwright):
     setup = BrowserSingleton(playwright)
     yield setup.page
-    setup.closeBrowser()
+    setup.close_browser()
 
 @pytest.mark.run(order=1)
 def test_login(setup):
     login = Login(setup)
-    login.goToWeb()
-    login.checkContent(validate["PageTitle"], validate["LoginButtonText"])
-    login.fillUsername(variables["username"])
-    login.fillPassword(variables["password"])
-    login.clickLogin()
+    login.go_to_web()
+    login.check_content(validate["PageTitle"], validate["LoginButtonText"])
+    login.fill_username(variables["username"])
+    login.fill_password(variables["password"])
+    login.click_login()
 
 @pytest.mark.run(order=2)
-def test_login_invalidCredential(setup):
+def test_login_invalid_credential(setup):
     login = Login(setup)
-    login.goToWeb()
-    login.checkContent(validate["PageTitle"], validate["LoginButtonText"])
-    login.fillUsername(variables["invalid"]["username"])
-    login.fillPassword(variables["invalid"]["password"])
-    login.clickLogin()
-    login.checkErrorMessage(validate["InvalidCredentialText"])
+    login.go_to_web()
+    login.check_content(validate["PageTitle"], validate["LoginButtonText"])
+    login.fill_username(variables["invalid"]["username"])
+    login.fill_password(variables["invalid"]["password"])
+    login.click_login()
+    login.check_error_message(validate["InvalidCredentialText"])

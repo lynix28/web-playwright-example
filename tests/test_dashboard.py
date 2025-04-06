@@ -12,10 +12,10 @@ def setup(playwright: Playwright):
     setup = BrowserSingleton(playwright)
     setup.login()
     yield setup.page
-    setup.closeBrowser()
+    setup.close_browser()
 
 @pytest.mark.run(order=1)
 def test_dashboard(setup):
     dashboard = Dashboard(setup)
-    dashboard.checkContent(validate["page_header"]["title"], validate["page_header"]["content_title"])
-    dashboard.clickSidemenu()
+    dashboard.check_content(validate["page_header"]["title"], validate["page_header"]["content_title"])
+    dashboard.click_sidemenu()

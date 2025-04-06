@@ -12,7 +12,8 @@
 
 - Use the Virtual ENV
 
-   - `source ./venv/bin/activate`
+   - `source ./venv/bin/activate` -> for Linux / Mac
+   - `./venv/Script/Activate.ps1` -> for Windows
 
 - Install PIP Packages
 

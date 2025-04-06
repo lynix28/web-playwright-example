@@ -4,3 +4,4 @@ venv/
 results/
 __pycache__
 .vscode
+.idea
